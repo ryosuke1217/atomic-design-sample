@@ -16,7 +16,12 @@ module.exports = {
           'vue-style-loader',
           'css-loader'
         ],
-      },      {
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        loader: 'file-loader?name=assets/[name].[hash].[ext]'
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
@@ -41,7 +46,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': path.join(__dirname, '..', 'src')
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
@@ -54,15 +60,6 @@ module.exports = {
     hints: false
   },
   devtool: '#eval-source-map'
-}
-
-module.exports = ({ config }) => {
-  config.module.rules.push({
-    test: /\.vue$/,
-    loader: 'storybook-addon-vue-info/loader',
-    enforce: 'post'
-  })
-  return config
 }
 
 if (process.env.NODE_ENV === 'production') {

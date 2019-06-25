@@ -6,6 +6,7 @@
     :small="small"
     :large="large"
     :block="block"
+    :dark="dark"
   >
     {{ text }}
   </v-btn>
@@ -25,7 +26,7 @@ export default {
     },
     color: {
       type: String,
-      default: 'white'
+      default: 'dark'
     },
     small: {
       type: Boolean,
@@ -36,6 +37,10 @@ export default {
       default: false
     },
     block: {
+      type: Boolean,
+      default: false
+    },
+    dark: {
       type: Boolean,
       default: false
     }
